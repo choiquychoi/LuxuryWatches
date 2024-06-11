@@ -1,0 +1,44 @@
+﻿@model IEnumerable<LoaiSp>
+
+
+		<ul class="memenu skyblue">
+			<li class="active"><a asp-action="Index" asp-controller="home">Home</a></li>
+				<li class="grid">
+					<a href="#">Department</a>
+					<div class="mepanel">
+						<div class="row">
+							<div class="col1 me-one">
+								<h4>All Departments</h4>
+								@foreach (var item in Model){
+								<ul>
+										<li><a asp-controller="Home" asp-action="SanPhamTheoLoai" asp-route-maloai="@item.MaLoai">@item.LoaiHang</a></li>
+								</ul>
+								}
+							</div>
+						</div>
+					</div>
+				</li>
+				<li class="grid">
+					<a href="typo.html">Blog</a>
+				</li>
+				<li class="grid">
+					<a href="contact.html">Contact</a>
+				</li>
+				<li class="grid">
+					<a asp-controller="Product" asp-action="Index">Tìm kiếm sản phẩm</a>
+				</li>
+				<li class="grid">
+			@if (User.Identity?.IsAuthenticated ?? false)
+			{
+				<a asp-controller="Account" asp-action="Logout">hi, @User.Identity.Name, Logout</a>
+			}
+			else
+			{
+				<a asp-controller="Account" asp-action="Login">login</a>
+			
+			}
+
+				</li>
+		</ul>
+
+	<div class="clearfix"> </div>
